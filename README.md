@@ -13,22 +13,22 @@ A production-grade portfolio template for engineers and technical professionals.
 | Styling | [Tailwind CSS v4](https://tailwindcss.com) with CSS variable theming |
 | Content | [Astro MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) + Zod-validated collections |
 | Icons | [Lucide React](https://lucide.dev) |
-| Fonts | DM Sans · DM Serif Display · JetBrains Mono (self-hosted via Fontsource) |
+| Fonts | DM Sans Â· DM Serif Display Â· JetBrains Mono (self-hosted via Fontsource) |
 | Scroll | [Lenis](https://lenis.darkroom.engineering) smooth scroll |
-| SEO | Astro Sitemap · Open Graph · Twitter Card · canonical URLs |
+| SEO | Astro Sitemap Â· Open Graph Â· Twitter Card Â· canonical URLs |
 
 ---
 
 ## Features
 
-- **Linear Ash / Midnight theme** — Two handcrafted palettes (light + dark) using CSS variables. Theme toggle persists to `localStorage` with FOUC prevention.
-- **MDX content collections** — Type-safe schemas for Projects, Blog, and Work Experience. Add content by dropping `.mdx` files into the right folder; no component changes needed.
-- **Design Evolution timeline** — Per-project stepper component with step badges, connecting lines, and image placeholders, ready to swap in real renders.
-- **Impact metrics bar** — Hero stat cards (e.g., `$4M → $15M`) with a glassmorphic lift, configurable from `site.ts`.
-- **Capabilities grid** — 2×2 card grid for your four core competencies, icon + title + description.
-- **Scroll-reveal animations** — Sections animate in on scroll using `IntersectionObserver`. Respects `prefers-reduced-motion`.
-- **Fully responsive** — Mobile-first layouts. Navigation collapses to a slide-out Sheet on small screens. TOC sidebar and avatar column appear at `md`/`xl` breakpoints.
-- **Accessible** — Semantic HTML, visible focus rings, ARIA labels on icon-only buttons, 4.5:1+ contrast ratios for body text.
+- **Linear Ash / Midnight theme** â€” Two handcrafted palettes (light + dark) using CSS variables. Theme toggle persists to `localStorage` with FOUC prevention.
+- **MDX content collections** â€” Type-safe schemas for Projects, Blog, and Work Experience. Add content by dropping `.mdx` files into the right folder; no component changes needed.
+- **Design Evolution timeline** â€” Per-project stepper component with step badges, connecting lines, and image placeholders, ready to swap in real renders.
+- **Impact metrics bar** â€” Hero stat cards (e.g., `$4M â†’ $15M`) with a glassmorphic lift, configurable from `site.ts`.
+- **Capabilities grid** â€” 2Ã—2 card grid for your four core competencies, icon + title + description.
+- **Scroll-reveal animations** â€” Sections animate in on scroll using `IntersectionObserver`. Respects `prefers-reduced-motion`.
+- **Fully responsive** â€” Mobile-first layouts. Navigation collapses to a slide-out Sheet on small screens. TOC sidebar and avatar column appear at `md`/`xl` breakpoints.
+- **Accessible** â€” Semantic HTML, visible focus rings, ARIA labels on icon-only buttons, 4.5:1+ contrast ratios for body text.
 
 ---
 
@@ -43,7 +43,7 @@ cd portfolio-starter-template
 npm install        # or pnpm install / yarn
 
 # 3. Dev server
-npm run dev        # → http://localhost:4321
+npm run dev        # â†’ http://localhost:4321
 ```
 
 ---
@@ -52,66 +52,66 @@ npm run dev        # → http://localhost:4321
 
 ```
 .
-├── public/
-│   ├── images/
-│   │   ├── avatar.svg              # Your profile photo
-│   │   ├── og.jpg                  # Open Graph image (1200×630)
-│   │   └── projects/               # Project cover images
-│   └── robots.txt
-│
-├── src/
-│   ├── components/
-│   │   ├── layout/
-│   │   │   ├── Header.tsx          # Fixed nav + theme toggle
-│   │   │   ├── Footer.tsx
-│   │   │   └── Section.tsx         # Labeled section wrapper
-│   │   ├── ui/                     # shadcn/ui primitives (badge, button, card…)
-│   │   ├── Hero.tsx                # Headline, sub-copy, CTAs, stat cards
-│   │   ├── CapabilitiesGrid.tsx    # Four-card competency grid
-│   │   ├── FeaturedProjects.tsx    # Up to 3 featured projects on home
-│   │   ├── ProjectCard.tsx         # Reusable project card
-│   │   ├── EvolutionTimeline.tsx   # Per-project design evolution stepper
-│   │   ├── ExperienceTimeline.tsx  # Work history on About page
-│   │   ├── SkillsGrid.tsx          # Skills pills on About page
-│   │   ├── AboutSection.tsx        # About preview on Home
-│   │   ├── NextSection.tsx         # CTA / "what I want next"
-│   │   ├── BlogPostCard.tsx
-│   │   ├── LatestPosts.tsx
-│   │   ├── ThemeProvider.tsx
-│   │   └── ThemeToggle.tsx
-│   │
-│   ├── content/
-│   │   ├── projects/               # *.mdx — one file per project
-│   │   ├── blog/                   # *.mdx — one file per post
-│   │   ├── work/                   # *.mdx — one file per role
-│   │   └── config.ts               # Zod schemas for all three collections
-│   │
-│   ├── layouts/
-│   │   └── BaseLayout.astro        # HTML shell: head, header, footer, theme script
-│   │
-│   ├── pages/
-│   │   ├── index.astro             # /
-│   │   ├── about.astro             # /about
-│   │   ├── 404.astro
-│   │   ├── projects/
-│   │   │   ├── index.astro         # /projects
-│   │   │   └── [slug].astro        # /projects/:slug
-│   │   └── blog/
-│   │       ├── index.astro         # /blog
-│   │       └── [slug].astro        # /blog/:slug
-│   │
-│   ├── config/
-│   │   └── site.ts                 # ← Start here. Name, role, bio, socials, skills.
-│   │
-│   ├── lib/
-│   │   └── utils.ts                # cn() helper
-│   │
-│   └── styles/
-│       └── globals.css             # Tailwind @theme, color tokens, fonts, animations
-│
-├── astro.config.mjs
-├── components.json                 # shadcn/ui config
-└── tsconfig.json
+â”œâ”€â”€ public/
+â”‚   â”œâ”€â”€ images/
+â”‚   â”‚   â”œâ”€â”€ avatar.svg              # Your profile photo
+â”‚   â”‚   â”œâ”€â”€ og.jpg                  # Open Graph image (1200Ã—630)
+â”‚   â”‚   â””â”€â”€ projects/               # Project cover images
+â”‚   â””â”€â”€ robots.txt
+â”‚
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â”œâ”€â”€ layout/
+â”‚   â”‚   â”‚   â”œâ”€â”€ Header.tsx          # Fixed nav + theme toggle
+â”‚   â”‚   â”‚   â”œâ”€â”€ Footer.tsx
+â”‚   â”‚   â”‚   â””â”€â”€ Section.tsx         # Labeled section wrapper
+â”‚   â”‚   â”œâ”€â”€ ui/                     # shadcn/ui primitives (badge, button, cardâ€¦)
+â”‚   â”‚   â”œâ”€â”€ Hero.tsx                # Headline, sub-copy, CTAs, stat cards
+â”‚   â”‚   â”œâ”€â”€ CapabilitiesGrid.tsx    # Four-card competency grid
+â”‚   â”‚   â”œâ”€â”€ FeaturedProjects.tsx    # Up to 3 featured projects on home
+â”‚   â”‚   â”œâ”€â”€ ProjectCard.tsx         # Reusable project card
+â”‚   â”‚   â”œâ”€â”€ EvolutionTimeline.tsx   # Per-project design evolution stepper
+â”‚   â”‚   â”œâ”€â”€ ExperienceTimeline.tsx  # Work history on About page
+â”‚   â”‚   â”œâ”€â”€ SkillsGrid.tsx          # Skills pills on About page
+â”‚   â”‚   â”œâ”€â”€ AboutSection.tsx        # About preview on Home
+â”‚   â”‚   â”œâ”€â”€ NextSection.tsx         # CTA / "what I want next"
+â”‚   â”‚   â”œâ”€â”€ BlogPostCard.tsx
+â”‚   â”‚   â”œâ”€â”€ LatestPosts.tsx
+â”‚   â”‚   â”œâ”€â”€ ThemeProvider.tsx
+â”‚   â”‚   â””â”€â”€ ThemeToggle.tsx
+â”‚   â”‚
+â”‚   â”œâ”€â”€ content/
+â”‚   â”‚   â”œâ”€â”€ projects/               # *.mdx â€” one file per project
+â”‚   â”‚   â”œâ”€â”€ blog/                   # *.mdx â€” one file per post
+â”‚   â”‚   â”œâ”€â”€ work/                   # *.mdx â€” one file per role
+â”‚   â”‚   â””â”€â”€ config.ts               # Zod schemas for all three collections
+â”‚   â”‚
+â”‚   â”œâ”€â”€ layouts/
+â”‚   â”‚   â””â”€â”€ BaseLayout.astro        # HTML shell: head, header, footer, theme script
+â”‚   â”‚
+â”‚   â”œâ”€â”€ pages/
+â”‚   â”‚   â”œâ”€â”€ index.astro             # /
+â”‚   â”‚   â”œâ”€â”€ about.astro             # /about
+â”‚   â”‚   â”œâ”€â”€ 404.astro
+â”‚   â”‚   â”œâ”€â”€ projects/
+â”‚   â”‚   â”‚   â”œâ”€â”€ index.astro         # /projects
+â”‚   â”‚   â”‚   â””â”€â”€ [slug].astro        # /projects/:slug
+â”‚   â”‚   â””â”€â”€ blog/
+â”‚   â”‚       â”œâ”€â”€ index.astro         # /blog
+â”‚   â”‚       â””â”€â”€ [slug].astro        # /blog/:slug
+â”‚   â”‚
+â”‚   â”œâ”€â”€ config/
+â”‚   â”‚   â””â”€â”€ site.ts                 # â† Start here. Name, role, bio, socials, skills.
+â”‚   â”‚
+â”‚   â”œâ”€â”€ lib/
+â”‚   â”‚   â””â”€â”€ utils.ts                # cn() helper
+â”‚   â”‚
+â”‚   â””â”€â”€ styles/
+â”‚       â””â”€â”€ globals.css             # Tailwind @theme, color tokens, fonts, animations
+â”‚
+â”œâ”€â”€ astro.config.mjs
+â”œâ”€â”€ components.json                 # shadcn/ui config
+â””â”€â”€ tsconfig.json
 ```
 
 ---
@@ -131,7 +131,7 @@ export const siteConfig = {
   location: "Boston, MA",
 
   url:         "https://janesmith.dev",
-  description: "Portfolio of Jane Smith — precision hardware from concept to production.",
+  description: "Portfolio of Jane Smith â€” precision hardware from concept to production.",
   ogImage:     "/images/og.jpg",
 
   social: {
@@ -172,25 +172,25 @@ duration: "3 months"                 # optional
 ...
 
 ## Outcome
-- Defect escape rate: 4.2% → 0.3%
-- Inspection cycle time: −55%
+- Defect escape rate: 4.2% â†’ 0.3%
+- Inspection cycle time: âˆ’55%
 ```
 
-Set `featured: true` on up to 3 projects — they appear in the **Featured Work** section on the home page.
+Set `featured: true` on up to 3 projects â€” they appear in the **Featured Work** section on the home page.
 
 **Project frontmatter schema:**
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
-| `title` | string | ✅ | |
-| `summary` | string ≤ 300 chars | ✅ | Used in cards and meta |
-| `date` | date | ✅ | ISO 8601 or `YYYY-MM-DD` |
-| `cover` | string | ✅ | Path under `public/` |
-| `tags` | string[] (min 1) | ✅ | Rendered as pills |
-| `featured` | boolean | — | Default: `false` |
-| `liveUrl` | URL | — | |
-| `repoUrl` | URL | — | |
-| `duration` | string | — | e.g., `"6 months"` |
+| `title` | string | âœ… | |
+| `summary` | string â‰¤ 300 chars | âœ… | Used in cards and meta |
+| `date` | date | âœ… | ISO 8601 or `YYYY-MM-DD` |
+| `cover` | string | âœ… | Path under `public/` |
+| `tags` | string[] (min 1) | âœ… | Rendered as pills |
+| `featured` | boolean | â€” | Default: `false` |
+| `liveUrl` | URL | â€” | |
+| `repoUrl` | URL | â€” | |
+| `duration` | string | â€” | e.g., `"6 months"` |
 
 ### 3. Add a work experience entry
 
@@ -207,8 +207,7 @@ order: 1                 # lower = higher in the list
 description: "Led mechanical design for a Class II electromechanical analyzer."
 achievements:
   - "Scaled production from 500 to 1,500 units/week"
-  - "8 FDA audits with zero major findings"
-  - "Reduced BOM cost by 18% through DFM review"
+  - "8 FDA audits with zero major findings"`r`n  - "Reduced BOM cost by 18% through DFM review"
 ---
 ```
 
@@ -216,14 +215,14 @@ achievements:
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
-| `company` | string | ✅ | |
-| `role` | string | ✅ | |
-| `startDate` | string | ✅ | e.g., `"Jan 2021"` |
-| `endDate` | string | — | Omit if current |
-| `current` | boolean | — | Default: `false` |
-| `description` | string | ✅ | One-sentence summary |
-| `achievements` | string[] | ✅ | Bullet points |
-| `order` | number | — | Controls sort order |
+| `company` | string | âœ… | |
+| `role` | string | âœ… | |
+| `startDate` | string | âœ… | e.g., `"Jan 2021"` |
+| `endDate` | string | â€” | Omit if current |
+| `current` | boolean | â€” | Default: `false` |
+| `description` | string | âœ… | One-sentence summary |
+| `achievements` | string[] | âœ… | Bullet points |
+| `order` | number | â€” | Controls sort order |
 
 ### 4. Add a blog post
 
@@ -250,7 +249,7 @@ Colors live in `src/styles/globals.css` under `@theme` (light) and `.dark` (dark
 @theme {
   --color-background:     #F4F5F8;   /* page background */
   --color-foreground:     #1A1A21;   /* primary text */
-  --color-primary-accent: #5E6AD2;   /* Linear indigo — buttons, links, highlights */
+  --color-primary-accent: #5E6AD2;   /* Linear indigo â€” buttons, links, highlights */
   --color-card:           #FFFFFF;
   --color-muted-foreground: #8A8F98; /* secondary text */
   /* ... */
@@ -265,7 +264,7 @@ Colors live in `src/styles/globals.css` under `@theme` (light) and `.dark` (dark
 
 Change `--color-primary-accent` to swap the entire accent color across buttons, badges, and highlights in one edit.
 
-> **Note:** This project uses Tailwind CSS v4 with class-based dark mode. The `@variant dark (&:is(.dark *))` directive in `globals.css` binds `dark:` utilities to the `.dark` class managed by the theme toggle — not to the OS `prefers-color-scheme` setting.
+> **Note:** This project uses Tailwind CSS v4 with class-based dark mode. The `@variant dark (&:is(.dark *))` directive in `globals.css` binds `dark:` utilities to the `.dark` class managed by the theme toggle â€” not to the OS `prefers-color-scheme` setting.
 
 ### 6. Update the Design Evolution timeline
 
@@ -303,18 +302,18 @@ npm run preview   # Serve the dist/ build locally
 
 The output is a fully static site in `dist/`. Deploy to any static host:
 
-**Vercel** — Import the repo, framework preset: **Astro**. Zero config needed.
+**Vercel** â€” Import the repo, framework preset: **Astro**. Zero config needed.
 
-**Netlify** — Build command: `npm run build` · Publish directory: `dist`
+**Netlify** â€” Build command: `npm run build` Â· Publish directory: `dist`
 
-**GitHub Pages** — Add `base` to `astro.config.mjs` if hosting at a sub-path, then deploy `dist/` to the `gh-pages` branch.
+**GitHub Pages** â€” Add `base` to `astro.config.mjs` if hosting at a sub-path, then deploy `dist/` to the `gh-pages` branch.
 
 Before deploying, update two values:
 
 ```js
 // astro.config.mjs
 export default defineConfig({
-  site: 'https://your-domain.com',   // ← your real URL
+  site: 'https://your-domain.com',   // â† your real URL
   // ...
 });
 ```
@@ -332,10 +331,10 @@ These values power the sitemap and canonical URLs.
 
 | Type | Location | Recommended size |
 |---|---|---|
-| Avatar | `public/images/avatar.jpg` | 400×400px |
-| Open Graph | `public/images/og.jpg` | 1200×630px |
-| Project covers | `public/images/projects/*.jpg` | 1200×675px (16:9) |
-| Blog covers | `public/images/blog/*.jpg` | 1200×675px (16:9) |
+| Avatar | `public/images/avatar.jpg` | 400Ã—400px |
+| Open Graph | `public/images/og.jpg` | 1200Ã—630px |
+| Project covers | `public/images/projects/*.jpg` | 1200Ã—675px (16:9) |
+| Blog covers | `public/images/blog/*.jpg` | 1200Ã—675px (16:9) |
 
 ---
 
@@ -343,12 +342,13 @@ These values power the sitemap and canonical URLs.
 
 The repo ships with placeholder content you can replace or delete:
 
-- **Projects** — Press Test Fixture, LIV Optical Test Rig, Thermal Redesign Journey (all featured), plus Analytics Dashboard and Design System Rebuild (not featured)
-- **Blog** — "Getting Started with Astro"
-- **Work** — Acme Corp, Startup Inc
+- **Projects** â€” Press Test Fixture, LIV Optical Test Rig, Thermal Redesign Journey (all featured), plus Analytics Dashboard and Design System Rebuild (not featured)
+- **Blog** â€” "Getting Started with Astro"
+- **Work** â€” Acme Corp, Startup Inc
 
 ---
 
 ## License
 
-MIT — use it, fork it, ship it.
+MIT â€” use it, fork it, ship it.
+

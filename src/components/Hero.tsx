@@ -3,9 +3,9 @@ import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 
 const stats = [
-  { value: "$4M → $15M", label: "Revenue Supported" },
-  { value: "500 → 1500", label: "Units / Week" },
-  { value: "23% → 3%", label: "Return Rate" },
+  { value: "$4M ΓåÆ $15M", label: "Revenue Supported" },
+  { value: "500 ΓåÆ 1500", label: "Units / Week" },
+  { value: "23% ΓåÆ 3%", label: "Return Rate" },
   { value: "8 Audits, 0 Major Findings", label: "Regulatory Record" },
 ];
 

@@ -15,9 +15,9 @@
 @import "@fontsource/jetbrains-mono/500.css";
 
 @theme {
-  /* ── Linear Ash (Light) — default / :root ── */
+  /* ΓöÇΓöÇ Linear Ash (Light) ΓÇö default / :root ΓöÇΓöÇ */
   --color-background: #F4F5F8;
-  /* WCAG AA body text ≥4.5:1 on typical surfaces */
+  /* WCAG AA body text ΓëÑ4.5:1 on typical surfaces */
   --color-foreground: #1a202c;
   --color-body-text: #1a202c;
   --color-card: #FFFFFF;
@@ -25,12 +25,12 @@
   --color-popover: #FFFFFF;
   --color-popover-foreground: #1a202c;
   --color-primary-accent: #5E6AD2;             /* Linear indigo */
-  --color-primary: #5E6AD2;                    /* alias — keeps shadcn/ui components working */
+  --color-primary: #5E6AD2;                    /* alias ΓÇö keeps shadcn/ui components working */
   --color-primary-foreground: #FFFFFF;
   --color-secondary: #ECEDF0;
   --color-secondary-foreground: #1a202c;
   --color-muted: #ECEDF0;
-  /* Secondary UI copy: darker gray for ≥4.5:1 on light backgrounds */
+  /* Secondary UI copy: darker gray for ΓëÑ4.5:1 on light backgrounds */
   --color-muted-foreground: #2d3748;
   --color-accent: #ECEDF0;
   --color-accent-foreground: #1a202c;
@@ -66,11 +66,11 @@
   /* Site-wide content width */
   --container-max: 72rem;
 
-  /* Border radius — generous rounding baseline */
+  /* Border radius ΓÇö generous rounding baseline */
   --radius: 0.75rem;
 }
 
-/* ── Linear Midnight (Dark) — .dark overrides ── */
+/* ΓöÇΓöÇ Linear Midnight (Dark) ΓÇö .dark overrides ΓöÇΓöÇ */
 .dark {
   --color-background: #08090A;
   --color-foreground: #edf2f7;
@@ -85,7 +85,7 @@
   --color-secondary: #1C1D1F;
   --color-secondary-foreground: #edf2f7;
   --color-muted: #1C1D1F;
-  /* Off-white / light gray for secondary copy on dark bg — ≥4.5:1 */
+  /* Off-white / light gray for secondary copy on dark bg ΓÇö ΓëÑ4.5:1 */
   --color-muted-foreground: #cbd5e1;
   --color-accent: #1C1D1F;
   --color-accent-foreground: #edf2f7;
@@ -132,7 +132,7 @@ h1, h2, h3 {
   color: var(--color-foreground);
 }
 
-/* ── prose styles for MDX content ── */
+/* ΓöÇΓöÇ prose styles for MDX content ΓöÇΓöÇ */
 .prose-content {
   --tw-prose-body: var(--color-body-text);
   --tw-prose-headings: var(--color-foreground);
@@ -179,7 +179,7 @@ h1, h2, h3 {
   border-radius: 0.75rem;
 }
 
-/* Timeline card diamond — points toward center rail (card on the right) */
+/* Timeline card diamond ΓÇö points toward center rail (card on the right) */
 .experience-card-pointer {
   position: absolute;
   left: 0;
