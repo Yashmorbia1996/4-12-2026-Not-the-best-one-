@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { Section } from "@/components/layout/Section";
-import { aboutTitle, aboutBioParagraphs } from "@/data/aboutContent";
+import { aboutTitle, aboutBioParagraphs, aboutNameNote } from "@/data/aboutContent";
 import { AboutMetrics } from "@/components/AboutMetrics";
 
 export function AboutSection() {
@@ -20,8 +20,11 @@ export function AboutSection() {
           <p className="text-xs text-muted-foreground">{location}</p>
         </div>
         <div className="min-w-0 max-w-3xl flex-1 space-y-2">
-          <p className="text-sm font-medium text-foreground">{name}</p>
-          <p className="text-sm text-muted-foreground">{role}</p>
+          <div className="space-y-1.5">
+            <p className="text-sm font-medium text-foreground">{name}</p>
+            <p className="text-sm leading-relaxed text-body-text">{aboutNameNote}</p>
+          </div>
+          <p className="text-sm text-muted-foreground pt-1">{role}</p>
           <h2 className="font-heading mb-2 text-2xl font-normal tracking-[-0.03em] text-primary-accent md:text-3xl">
             {aboutTitle}
           </h2>
