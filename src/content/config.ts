@@ -47,8 +47,6 @@ const work = defineCollection({
     brandInitial: z.string().optional(),
     /** Optional hex for logo chip background */
     brandColor: z.string().optional(),
-    /** Company logo (e.g. from careers / marketing site homepage) */
-    logoUrl: z.string().url().optional(),
   }),
 });
 

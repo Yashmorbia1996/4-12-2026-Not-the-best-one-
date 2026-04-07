@@ -15,7 +15,6 @@ export interface WorkTimelineEntry {
     coverImage?: string;
     brandInitial?: string;
     brandColor?: string;
-    logoUrl?: string;
   };
 }
 
@@ -34,51 +33,22 @@ function chipLabel(data: WorkTimelineEntry["data"]) {
     : raw.replace(/[^A-Za-z]/g, "").slice(0, 2).toUpperCase() || raw.slice(0, 2).toUpperCase();
 }
 
-function TimelineLogo({
-  data,
-  size,
-}: {
-  data: WorkTimelineEntry["data"];
-  size: "md" | "sm";
-}) {
-  const dim = size === "md" ? "h-11 w-11" : "h-8 w-8";
-  const textSize = size === "md" ? "text-xs" : "text-[10px]";
-  const borderStyle =
-    data.brandColor && !data.logoUrl
-      ? ({
-          borderColor: data.brandColor,
-          color: data.brandColor,
-        } as const)
-      : undefined;
-
-  return (
-    <div
-      className={[
-        "flex shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-primary-accent bg-card shadow-sm",
-        dim,
-        data.logoUrl ? "p-1.5" : `${textSize} font-bold text-primary-accent`,
-      ].join(" ")}
-      style={borderStyle}
-    >
-      {data.logoUrl ? (
-        <img
-          src={data.logoUrl}
-          alt={`${data.company} logo`}
-          className="h-full w-full object-contain"
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <span aria-hidden>{chipLabel(data)}</span>
-      )}
-    </div>
-  );
-}
-
 function Node({ data }: { data: WorkTimelineEntry["data"] }) {
   return (
     <div className="relative z-10 flex justify-center pt-2">
-      <TimelineLogo data={data} size="md" />
+      <div
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-primary-accent bg-card text-xs font-bold text-primary-accent shadow-sm"
+        style={
+          data.brandColor
+            ? {
+                borderColor: data.brandColor,
+                color: data.brandColor,
+              }
+            : undefined
+        }
+      >
+        {chipLabel(data)}
+      </div>
     </div>
   );
 }
@@ -185,8 +155,8 @@ export function WorkExperienceTimeline({ entries }: WorkExperienceTimelineProps)
             const isOpen = !!expanded[entry.id];
             return (
               <div key={entry.id} className="relative">
-                <div className="absolute -left-6 top-6 z-10 -translate-x-1/2">
-                  <TimelineLogo data={data} size="sm" />
+                <div className="absolute -left-6 top-6 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border-2 border-primary-accent bg-card text-[10px] font-bold text-primary-accent shadow-sm">
+                  {chipLabel(data)}
                 </div>
                 <TimelineCard
                   data={data}
