@@ -7,7 +7,7 @@ import { SkillsGrid } from '../components/SkillsGrid';
 import { AboutMetrics } from '../components/AboutMetrics';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '../config/site';
-import { aboutTitle, aboutBioParagraphs } from '../data/aboutContent';
+import { aboutTitle, aboutBioParagraphs, aboutNameNote } from '../data/aboutContent';
 
 const workEntries = await getCollection('work');
 ---
@@ -22,10 +22,15 @@ const workEntries = await getCollection('work');
 
         <div class="flex-1 min-w-0 space-y-16">
           <section id="intro" class="scroll-reveal space-y-2 pt-2">
-            <h1 class="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              {siteConfig.name}
-            </h1>
-            <p class="text-xl text-body-text">
+            <div class="max-w-3xl space-y-2">
+              <h1 class="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                {siteConfig.name}
+              </h1>
+              <p class="text-sm leading-relaxed text-body-text">
+                {aboutNameNote}
+              </p>
+            </div>
+            <p class="text-xl text-body-text pt-2">
               {siteConfig.role}
             </p>
             <p class="text-base text-muted-foreground">
