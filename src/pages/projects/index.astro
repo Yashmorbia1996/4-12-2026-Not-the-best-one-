@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ProjectCard } from '../../components/ProjectCard';
+import { ProjectGallery } from '../../components/ProjectGallery';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const sorted = projects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Projects" description="Case studies and engineering work.">
+  <div class="site-container pt-28 pb-20">
+    <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-4">
+      Case Studies
+    </h1>
+    <p class="text-muted-foreground text-lg max-w-lg mb-16">
+      Selected mechanical engineering projects — from electromechanical device development to production scale-up.
+    </p>
+
+    <!-- Project cards -->
+    <div class="space-y-10 mb-24">
+      {sorted.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          summary={project.data.summary}
+          tags={project.data.tags}
+          slug={project.id}
+          cover={project.data.cover}
+          liveUrl={project.data.liveUrl}
+          repoUrl={project.data.repoUrl}
+          date={project.data.date}
+          duration={project.data.duration}
+          client:visible
+        />
+      ))}
+    </div>
+
+    <!-- CAD Gallery -->
+    <div class="border-t border-border pt-16">
+      <p class="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground mb-2 flex items-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-accent"></span>
+        Gallery
+      </p>
+      <h2 class="font-heading text-3xl md:text-4xl font-normal tracking-[-0.03em] text-foreground mb-10">
+        CAD renders & documentation
+      </h2>
+      <ProjectGallery client:visible />
+    </div>
+  </div>
+</BaseLayout>

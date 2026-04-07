@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AboutTOC } from '../components/AboutTOC';
+import { AvatarColumn } from '../components/AvatarColumn';
+import { ExperienceTimeline } from '../components/ExperienceTimeline';
+import { SkillsGrid } from '../components/SkillsGrid';
+import { AboutMetrics } from '../components/AboutMetrics';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../config/site';
+import { aboutTitle, aboutBioParagraphs } from '../data/aboutContent';
+
+const workEntries = await getCollection('work');
+---
+
+<BaseLayout title="About">
+  <div class="site-container pt-24 pb-20">
+    <div class="flex gap-6 relative">
+      <AboutTOC client:visible />
+
+      <div class="flex flex-1 min-w-0 gap-8">
+        <AvatarColumn client:load />
+
+        <div class="flex-1 min-w-0 space-y-16">
+          <section id="intro" class="scroll-reveal space-y-2 pt-2">
+            <h1 class="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+              {siteConfig.name}
+            </h1>
+            <p class="text-xl text-body-text">
+              {siteConfig.role}
+            </p>
+            <p class="text-base text-muted-foreground">
+              {siteConfig.location}
+            </p>
+            <h2 class="pt-4 text-xl font-bold tracking-tight text-primary-accent">
+              {aboutTitle}
+            </h2>
+            <div class="max-w-3xl space-y-3 text-sm leading-relaxed text-body-text">
+              {aboutBioParagraphs.map((p) => (
+                <p>{p}</p>
+              ))}
+            </div>
+            <div class="pt-4">
+              <AboutMetrics client:load />
+            </div>
+            <div class="pt-6">
+              <a
+                href={`mailto:${siteConfig.social.email}`}
+                class="inline-flex items-center gap-2 rounded-xl border-2 border-primary-accent/35 bg-primary-accent/10 px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition-all duration-300 hover:border-primary-accent hover:bg-primary-accent hover:text-primary-foreground hover:shadow-md"
+              >
+                Schedule a call →
+              </a>
+            </div>
+          </section>
+
+          <section id="experience" class="scroll-reveal space-y-8">
+            <h2 class="text-2xl font-bold tracking-tight">Work experience</h2>
+            <ExperienceTimeline entries={workEntries} client:visible />
+          </section>
+
+          <section id="skills" class="scroll-reveal space-y-8">
+            <h2 class="text-2xl font-bold tracking-tight">Skills</h2>
+            <SkillsGrid client:visible />
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
