@@ -7,11 +7,11 @@ const capabilities = [
     eyebrow: "Primary identity",
     title: "Mechanical & Manufacturing Engineering",
     summary:
-      "I design hardware for the full lifecycle — not just for the CAD review. Every design decision I make accounts for how the part will be made, how it will be tested, and how it will behave after a year in the field.",
+      "I design hardware for the full lifecycle, not just for the CAD review. Every design decision I make accounts for how the part will be made, how it will be tested, and how it will behave after a year in the field.",
     points: [
       "Designed and iterated on an FDA-cleared handheld laser device from early concept through production release",
       "Developed 20+ production and test fixtures to control critical tolerances and reduce operator variability",
-      "Led thermal redesign across two phases — grill geometry and internal heatsink — that cut field return rates from 23% to 3%",
+      "Led thermal redesign across two phases, grill geometry and internal heatsink, that cut field return rates from 23% to 3%",
     ],
     metric: "23% -> 3% field returns",
     featured: true,
@@ -21,7 +21,7 @@ const capabilities = [
     eyebrow: "Force multiplier",
     title: "Production Leadership",
     summary:
-      "Production is an engineering problem. I approached it the same way I approached design — with time studies, structured iteration, and documented processes that could hold up under an audit.",
+      "Production is an engineering problem. I approached it the same way I approached design, with time studies, structured iteration, and documented processes that could hold up under an audit.",
     points: [
       "Led and mentored a 10-person production team for 4+ years",
       "Redesigned workflow and fixture strategy to triple weekly output without adding proportional headcount",
@@ -34,7 +34,7 @@ const capabilities = [
     eyebrow: "Force multiplier",
     title: "Supply Chain & Vendor Systems",
     summary:
-      "I managed suppliers the way I managed engineering problems — with data, contingency planning, and a bias toward preventing issues before they hit the line.",
+      "I managed suppliers the way I managed engineering problems, with data, contingency planning, and a bias toward preventing issues before they hit the line.",
     points: [
       "Sourced and qualified 15+ suppliers across the US and Asia",
       "Built second-source strategies for high-risk components to eliminate single points of supply failure",
@@ -50,7 +50,7 @@ const capabilities = [
       "I treat CAPAs, audits, and design controls as engineering work, not paperwork. The documentation is only useful if the underlying problem is actually solved.",
     points: [
       "Supported 3 MDSAP and 5 internal ISO 13485 audits with zero major findings across all eight",
-      "Managed 15+ CAPAs from root cause through verified closure — across design, process, and supplier quality",
+      "Managed 15+ CAPAs from root cause through verified closure across design, process, and supplier quality",
       "Maintained DHF and DMR documentation through multiple design changes and production transitions",
     ],
     metric: "8 audits, 0 major findings",
@@ -66,7 +66,7 @@ export function CapabilitiesGrid() {
           How I operate
         </h2>
         <p className="text-sm leading-relaxed text-body-text">
-          Mechanical engineering is the core. The other three are areas I took real ownership of because the product required it — not to broaden my resume, but because no one else was doing it.
+          Mechanical engineering is the core. The other three are areas I took real ownership of because the product required it, not to broaden my resume, but because no one else was doing it.
         </p>
       </div>
 

@@ -32,7 +32,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             Flagship work
           </h2>
           <p className="text-sm leading-relaxed text-body-text">
-            Three projects from the same program — each one a different type of problem, the same standard for what done looks like.
+            Three projects from the same program, each one a different type of problem, with the same standard for what done looks like.
           </p>
         </div>
         <Button variant="ghost" size="sm" asChild className="hidden sm:flex">

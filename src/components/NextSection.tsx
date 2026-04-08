@@ -15,7 +15,7 @@ export function NextSection() {
           I&apos;m looking for a Senior Mechanical Engineer or Product Development role where the hardware is complex enough that design decisions carry real consequences in manufacturing and the field.
         </p>
         <p className="text-base text-body-text leading-relaxed mb-10 max-w-2xl mx-auto">
-          I work best on teams that care about getting the details right — tolerance stack, thermal margins, build repeatability — and where engineering judgment is trusted early in the process, not just at the review stage.
+          I work best on teams that care about getting the details right, including tolerance stack, thermal margins, and build repeatability, and where engineering judgment is trusted early in the process, not just at the review stage.
         </p>
 
         <a

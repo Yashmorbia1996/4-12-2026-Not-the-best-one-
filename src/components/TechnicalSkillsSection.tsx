@@ -41,11 +41,11 @@ const skillGroups = [
     icon: Workflow,
     title: "Leadership & Operations",
     summary:
-      "Led a 10-person production team through a 3× output ramp. Owned production forecasting, capacity planning, inventory tracking, and supply chain coordination — built in spreadsheets without an ERP, maintained through two MDSAP audit cycles.",
+      "Led a 10-person production team through a 3× output ramp. Owned production forecasting, capacity planning, inventory tracking, and supply chain coordination, built in spreadsheets without an ERP and maintained through two MDSAP audit cycles.",
     highlights: [
       "Forecasting -> production models",
       "Global supply chain operations",
-      "Team leadership — 10 technicians",
+      "Team leadership for 10 technicians",
       "SOPs / capacity models",
     ],
   },
@@ -59,7 +59,7 @@ export function TechnicalSkillsSection() {
           What I know how to do
         </h2>
         <p className="text-sm leading-relaxed text-body-text">
-          Six areas built through direct execution on one FDA-cleared product — from early concept through full production ramp.
+          Six areas built through direct execution on one FDA-cleared product, from early concept through full production ramp.
         </p>
       </div>
 
