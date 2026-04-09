@@ -3,36 +3,41 @@ import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Section } from "@/components/layout/Section";
 
-interface Project {
-  id: string;
-  data: {
-    title: string;
-    summary: string;
-    tags: string[];
-    cover: string;
-    featured: boolean;
-    liveUrl?: string;
-  };
-}
+const caseStudies = [
+  {
+    slug: "thermal-redesign-journey",
+    title: "Thermal Redesign Journey",
+    problem: "23% field return rate from overheating.",
+    action: "Optimized grill geometry via SolidWorks Flow Simulation and deployed an all-metal heatsink.",
+    result: "16°C chip temp reduction; returns dropped to 3%.",
+  },
+  {
+    slug: "liv-optical-test-rig",
+    title: "LIV Optical Test Rig",
+    problem: "Manual laser testing caused high variability.",
+    action: "Designed 39-part assembly with kinematic mounting and GD&T package.",
+    result: "3x improvement in batch-test throughput.",
+  },
+  {
+    slug: "press-test-fixture",
+    title: "Press Test Fixture",
+    problem: "Manual alignment introduced yield loss.",
+    action: "Redesigned across three generations to integrate alignment into fixture geometry.",
+    result: "Sustained 95% yield at 1,500 units/week.",
+  },
+] as const;
 
-interface FeaturedProjectsProps {
-  projects: Project[];
-}
-
-export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
-  const featured = projects.filter((p) => p.data.featured).slice(0, 3);
-
-  if (featured.length === 0) return null;
+export function FeaturedProjects() {
 
   return (
-    <Section label="Case Studies">
-      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div className="max-w-3xl space-y-3">
-          <h2 className="font-heading text-3xl md:text-4xl font-normal tracking-[-0.03em]">
-            Flagship work
-          </h2>
-          <p className="text-sm leading-relaxed text-body-text">
-            Three projects from the same program, each one a different type of problem, with the same standard for what done looks like.
+    <Section>
+      <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-4xl space-y-4">
+          <p className="text-5xl font-semibold tracking-[-0.04em] text-blue-600 md:text-6xl">
+            Case Studies
+          </p>
+          <p className="text-base leading-relaxed text-gray-700">
+            Three flagship projects framed the way engineering teams actually talk about impact.
           </p>
         </div>
         <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
@@ -41,17 +46,17 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           </a>
         </Button>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {featured.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.data.title}
-            summary={project.data.summary}
-            tags={project.data.tags}
-            slug={project.id}
-            cover={project.data.cover}
-            liveUrl={project.data.liveUrl}
-          />
+      <div className="grid grid-cols-12 gap-5">
+        {caseStudies.map((project) => (
+          <div key={project.slug} className="col-span-12 md:col-span-6 xl:col-span-4">
+            <ProjectCard
+              title={project.title}
+              problem={project.problem}
+              action={project.action}
+              result={project.result}
+              slug={project.slug}
+            />
+          </div>
         ))}
       </div>
       <div className="mt-8 sm:hidden">

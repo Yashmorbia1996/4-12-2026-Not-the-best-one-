@@ -21,6 +21,7 @@ export interface WorkTimelineEntry {
 
 interface WorkExperienceTimelineProps {
   entries: WorkTimelineEntry[];
+  variant?: "default" | "home";
 }
 
 function periodLabel(data: WorkTimelineEntry["data"]) {
@@ -41,7 +42,7 @@ function TimelineLogo({
   data: WorkTimelineEntry["data"];
   size: "md" | "sm";
 }) {
-  const dim = size === "md" ? "h-11 w-11" : "h-8 w-8";
+  const dim = size === "md" ? "h-12 w-12" : "h-8 w-8";
   const textSize = size === "md" ? "text-xs" : "text-[10px]";
   const borderStyle =
     data.brandColor && !data.logoUrl
@@ -75,9 +76,9 @@ function TimelineLogo({
   );
 }
 
-function Node({ data }: { data: WorkTimelineEntry["data"] }) {
+function Node({ data, variant }: { data: WorkTimelineEntry["data"]; variant: "default" | "home" }) {
   return (
-    <div className="relative z-10 flex justify-center pt-2">
+    <div className={["relative z-10 flex justify-center", variant === "home" ? "pt-4" : "pt-2"].join(" ")}>
       <TimelineLogo data={data} size="md" />
     </div>
   );
@@ -86,31 +87,38 @@ function Node({ data }: { data: WorkTimelineEntry["data"] }) {
 function MetaBlock({
   data,
   align,
+  variant,
 }: {
   data: WorkTimelineEntry["data"];
   align: "left" | "right";
+  variant: "default" | "home";
 }) {
   return (
     <div
       className={[
-        "flex flex-col gap-2 pt-2",
+        "flex flex-col gap-2",
+        variant === "home" ? "pt-4" : "pt-2",
         align === "right" ? "items-end text-right pr-4 md:pr-6" : "items-start text-left pl-4 md:pl-6",
       ].join(" ")}
     >
       <p
         className={[
-          "text-sm font-semibold text-primary-accent",
+          variant === "home" ? "text-base font-semibold text-primary-accent" : "text-sm font-semibold text-primary-accent",
           data.current ? "rounded-lg border border-primary-accent/35 bg-primary-accent/10 px-3 py-2" : "",
         ].join(" ")}
       >
         {periodLabel(data)}
       </p>
-      {data.location ? <p className="text-xs text-muted-foreground">{data.location}</p> : null}
+      {data.location ? (
+        <p className={variant === "home" ? "text-sm text-muted-foreground" : "text-xs text-muted-foreground"}>
+          {data.location}
+        </p>
+      ) : null}
     </div>
   );
 }
 
-export function WorkExperienceTimeline({ entries }: WorkExperienceTimelineProps) {
+export function WorkExperienceTimeline({ entries, variant = "default" }: WorkExperienceTimelineProps) {
   const sorted = useMemo(
     () => [...entries].sort((a, b) => a.data.order - b.data.order),
     [entries],
@@ -132,7 +140,7 @@ export function WorkExperienceTimeline({ entries }: WorkExperienceTimelineProps)
           className="pointer-events-none absolute top-0 bottom-0 left-1/2 z-0 w-px -translate-x-1/2 bg-border"
           aria-hidden
         />
-        <div className="relative z-10 flex flex-col gap-12 lg:gap-16">
+        <div className={["relative z-10 flex flex-col", variant === "home" ? "gap-16 lg:gap-20" : "gap-12 lg:gap-16"].join(" ")}>
           {sorted.map((entry, i) => {
             const cardOnRight = i % 2 === 0;
             const { data } = entry;
@@ -141,33 +149,40 @@ export function WorkExperienceTimeline({ entries }: WorkExperienceTimelineProps)
             return (
               <div
                 key={entry.id}
-                className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_2.75rem_minmax(0,1fr)] md:items-start md:gap-0"
+                className={[
+                  "grid grid-cols-1 md:items-start md:gap-0",
+                  variant === "home"
+                    ? "md:grid-cols-[minmax(0,1.05fr)_3.5rem_minmax(0,1.35fr)]"
+                    : "md:grid-cols-[minmax(0,1fr)_2.75rem_minmax(0,1fr)]",
+                ].join(" ")}
               >
                 {cardOnRight ? (
                   <>
-                    <MetaBlock data={data} align="right" />
-                    <Node data={data} />
-                    <div className="pl-4 md:pl-6">
+                    <MetaBlock data={data} align="right" variant={variant} />
+                    <Node data={data} variant={variant} />
+                    <div className={variant === "home" ? "pl-5 md:pl-8" : "pl-4 md:pl-6"}>
                       <TimelineCard
                         data={data}
                         expanded={isOpen}
                         onToggleReadMore={() => toggle(entry.id)}
                         pointer="start"
+                        variant={variant}
                       />
                     </div>
                   </>
                 ) : (
                   <>
-                    <div className="pr-4 md:pr-6">
+                    <div className={variant === "home" ? "pr-5 md:pr-8" : "pr-4 md:pr-6"}>
                       <TimelineCard
                         data={data}
                         expanded={isOpen}
                         onToggleReadMore={() => toggle(entry.id)}
                         pointer="end"
+                        variant={variant}
                       />
                     </div>
-                    <Node data={data} />
-                    <MetaBlock data={data} align="left" />
+                    <Node data={data} variant={variant} />
+                    <MetaBlock data={data} align="left" variant={variant} />
                   </>
                 )}
               </div>
@@ -193,6 +208,7 @@ export function WorkExperienceTimeline({ entries }: WorkExperienceTimelineProps)
                   expanded={isOpen}
                   onToggleReadMore={() => toggle(entry.id)}
                   pointer="none"
+                  variant={variant}
                 />
                 <div className="mt-3 flex flex-col gap-1 border-t border-border pt-3">
                   <p
@@ -221,14 +237,21 @@ function TimelineCard({
   expanded,
   onToggleReadMore,
   pointer,
+  variant,
 }: {
   data: WorkTimelineEntry["data"];
   expanded: boolean;
   onToggleReadMore: () => void;
   pointer: "start" | "end" | "none";
+  variant: "default" | "home";
 }) {
   return (
-    <article className="relative overflow-visible rounded-2xl border border-solid border-primary-accent/25 bg-card p-4 shadow-sm transition-shadow duration-300 hover:shadow-md">
+    <article
+      className={[
+        "relative overflow-visible border border-solid border-primary-accent/25 bg-card shadow-sm transition-shadow duration-300 hover:shadow-md",
+        variant === "home" ? "rounded-[1.75rem] p-6" : "rounded-2xl p-4",
+      ].join(" ")}
+    >
       {pointer === "start" ? (
         <span className="experience-card-pointer hidden md:block" aria-hidden />
       ) : null}
@@ -236,29 +259,31 @@ function TimelineCard({
         <span className="experience-card-pointer-end hidden md:block" aria-hidden />
       ) : null}
 
-      <h3 className="text-base font-semibold text-primary-accent md:text-lg">
+      <h3 className={variant === "home" ? "text-xl font-semibold text-primary-accent md:text-[1.75rem]" : "text-base font-semibold text-primary-accent md:text-lg"}>
         {data.company} — {data.role}
       </h3>
 
       {data.coverImage ? (
-        <div className="mt-4 overflow-hidden rounded-xl border border-border bg-muted/30">
+        <div className={["mt-4 overflow-hidden border border-border bg-muted/30", variant === "home" ? "rounded-2xl" : "rounded-xl"].join(" ")}>
           <img
             src={data.coverImage}
             alt=""
-            className="h-40 w-full object-cover object-center md:h-48"
+            className={variant === "home" ? "h-56 w-full object-cover object-center md:h-64" : "h-40 w-full object-cover object-center md:h-48"}
             loading="lazy"
           />
         </div>
       ) : null}
 
-      <p className="mt-4 text-sm leading-relaxed text-body-text">{data.description}</p>
+      <p className={variant === "home" ? "mt-5 text-base leading-relaxed text-body-text" : "mt-4 text-sm leading-relaxed text-body-text"}>
+        {data.description}
+      </p>
 
       {data.achievements.length ? (
         <div className="mt-4">
           {expanded ? (
-            <ul className="space-y-2 border-t border-border pt-4">
+            <ul className={variant === "home" ? "space-y-3 border-t border-border pt-5" : "space-y-2 border-t border-border pt-4"}>
               {data.achievements.map((line, i) => (
-                <li key={i} className="flex gap-2 text-sm text-body-text">
+                <li key={i} className={variant === "home" ? "flex gap-3 text-base text-body-text" : "flex gap-2 text-sm text-body-text"}>
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-current" aria-hidden />
                   <span>{line}</span>
                 </li>
@@ -268,7 +293,9 @@ function TimelineCard({
           <button
             type="button"
             onClick={onToggleReadMore}
-            className="mt-3 text-sm font-semibold text-primary-accent transition-opacity duration-300 hover:opacity-80"
+            className={variant === "home"
+              ? "mt-4 text-base font-semibold text-primary-accent transition-opacity duration-300 hover:opacity-80"
+              : "mt-3 text-sm font-semibold text-primary-accent transition-opacity duration-300 hover:opacity-80"}
           >
             {expanded ? "Show less" : "Read more"}
           </button>

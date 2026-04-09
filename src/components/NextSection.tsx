@@ -6,9 +6,9 @@ export function NextSection() {
   const { social, phone } = siteConfig;
 
   return (
-    <Section label="What I want next" id="contact">
+    <Section id="contact">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal tracking-[-0.03em] text-foreground mb-4">
+        <h2 className="mb-4 text-5xl font-semibold tracking-[-0.04em] text-blue-600 md:text-6xl">
           What I want next
         </h2>
         <p className="text-base text-body-text leading-relaxed mb-10 max-w-2xl mx-auto">

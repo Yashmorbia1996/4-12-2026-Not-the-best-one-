@@ -16,30 +16,30 @@
 
 @theme {
   /* ── Linear Ash (Light) — default / :root ── */
-  --color-background: #F4F5F8;
+  --color-background: #f9fafb;
   /* WCAG AA body text ≥4.5:1 on typical surfaces */
-  --color-foreground: #1a202c;
-  --color-body-text: #1a202c;
+  --color-foreground: #111827;
+  --color-body-text: #111827;
   --color-card: #FFFFFF;
-  --color-card-foreground: #1a202c;
+  --color-card-foreground: #111827;
   --color-popover: #FFFFFF;
-  --color-popover-foreground: #1a202c;
-  --color-primary-accent: #5E6AD2;             /* Linear indigo */
-  --color-primary: #5E6AD2;                    /* alias — keeps shadcn/ui components working */
+  --color-popover-foreground: #111827;
+  --color-primary-accent: #2563eb;
+  --color-primary: #2563eb;
   --color-primary-foreground: #FFFFFF;
-  --color-secondary: #ECEDF0;
-  --color-secondary-foreground: #1a202c;
-  --color-muted: #ECEDF0;
+  --color-secondary: #f3f4f6;
+  --color-secondary-foreground: #111827;
+  --color-muted: #f3f4f6;
   /* Secondary UI copy: darker gray for ≥4.5:1 on light backgrounds */
-  --color-muted-foreground: #2d3748;
-  --color-accent: #ECEDF0;
-  --color-accent-foreground: #1a202c;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f3f4f6;
+  --color-accent-foreground: #111827;
   --color-destructive: hsl(0 62.8% 50%);
   --color-destructive-foreground: #FFFFFF;
-  --color-border: #E8E9EC;
-  --color-input: #E8E9EC;
-  --color-ring: #5E6AD2;
-  --color-brand: #5E6AD2;
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #2563eb;
+  --color-brand: #2563eb;
   --color-surface: #FFFFFF;
   --color-surface-elevated: #ECEDF0;
 
@@ -64,7 +64,7 @@
   --text-scale-6: 3.81469727rem;
 
   /* Site-wide content width */
-  --container-max: 72rem;
+  --container-max: 80rem;
 
   /* Border radius — generous rounding baseline */
   --radius: 0.75rem;
@@ -120,12 +120,6 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
-  background-image: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--color-primary-accent) 6%, transparent) 1px,
-    transparent 1px
-  );
-  background-size: 24px 24px;
 }
 
 h1, h2, h3 {
@@ -216,6 +210,14 @@ h1, h2, h3 {
   .bg-surface { background-color: var(--color-surface); }
   .bg-surface-elevated { background-color: var(--color-surface-elevated); }
   .border-brand { border-color: var(--color-brand); }
+  .blueprint-board {
+    background-image:
+      linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+      radial-gradient(circle at 1px 1px, rgba(37, 99, 235, 0.1) 1px, transparent 0);
+    background-size: 40px 40px, 40px 40px, 20px 20px;
+    background-position: center;
+  }
 }
 
 /* Respect reduced-motion preference */
