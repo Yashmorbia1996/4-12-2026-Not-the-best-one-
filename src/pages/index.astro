@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Hero } from '../components/Hero';
 import { HomeWorkExperienceSection } from '../components/HomeWorkExperienceSection';
 import { FeaturedProjects } from '../components/FeaturedProjects';
+import { MyJourneySection } from '../components/MyJourneySection';
 import { TechnicalSkillsSection } from '../components/TechnicalSkillsSection';
-import { NextSection } from '../components/NextSection';
 import { getCollection } from 'astro:content';
 
 const workEntries = await getCollection('work');
@@ -15,5 +15,5 @@ const workEntries = await getCollection('work');
   <HomeWorkExperienceSection entries={workEntries} client:load />
   <TechnicalSkillsSection client:visible />
   <FeaturedProjects client:visible />
-  <NextSection client:visible />
+  <MyJourneySection client:visible />
 </BaseLayout>

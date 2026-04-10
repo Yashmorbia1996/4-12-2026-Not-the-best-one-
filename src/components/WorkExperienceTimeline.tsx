@@ -76,17 +76,46 @@ function TimelineLogo({
   );
 }
 
-function Node({ data, variant }: { data: WorkTimelineEntry["data"]; variant: "default" | "home" }) {
+function Node({
+  data,
+  variant,
+  showTopExtension = false,
+}: {
+  data: WorkTimelineEntry["data"];
+  variant: "default" | "home";
+  showTopExtension?: boolean;
+}) {
   return (
     <div className={["relative z-10 flex justify-center", variant === "home" ? "pt-3" : "pt-2"].join(" ")}>
-      <div
-        className={[
-          "timeline-node-shell flex items-center justify-center rounded-full bg-background",
-          data.current ? "timeline-node-shell--current" : "",
-          variant === "home" ? "h-16 w-16" : "h-14 w-14",
-        ].join(" ")}
-      >
-        <TimelineLogo data={data} size="md" />
+      <div className="relative flex items-center justify-center">
+        {showTopExtension ? (
+          <>
+            <span
+              className={[
+                "absolute bottom-full left-1/2 -translate-x-1/2 rounded-full bg-primary-accent/45",
+                variant === "home" ? "h-5 w-[2px]" : "h-4 w-[2px]",
+              ].join(" ")}
+              aria-hidden
+            />
+            <span
+              className={[
+                "absolute left-1/2 -translate-x-1/2 rounded-full bg-primary-accent/55",
+                variant === "home" ? "bottom-[calc(100%+1.1rem)] h-2.5 w-2.5" : "bottom-[calc(100%+0.9rem)] h-2 w-2",
+              ].join(" ")}
+              aria-hidden
+            />
+          </>
+        ) : null}
+
+        <div
+          className={[
+            "timeline-node-shell flex items-center justify-center rounded-full bg-background",
+            data.current ? "timeline-node-shell--current" : "",
+            variant === "home" ? "h-16 w-16" : "h-14 w-14",
+          ].join(" ")}
+        >
+          <TimelineLogo data={data} size="md" />
+        </div>
       </div>
     </div>
   );
@@ -119,13 +148,13 @@ function MetaBlock({
         <p
           className={[
             "font-mono font-semibold uppercase tracking-[0.14em] text-primary-accent",
-            variant === "home" ? "text-[11px]" : "text-[10px]",
+            variant === "home" ? "text-[13px]" : "text-[10px]",
           ].join(" ")}
         >
           {periodLabel(data)}
         </p>
         {data.location ? (
-          <p className={variant === "home" ? "text-sm text-text-muted" : "text-xs text-text-muted"}>
+          <p className={variant === "home" ? "text-[1.05rem] text-text-muted" : "text-xs text-text-muted"}>
             {data.location}
           </p>
         ) : null}
@@ -287,7 +316,11 @@ export function WorkExperienceTimeline({ entries, variant = "default" }: WorkExp
                 {cardOnRight ? (
                   <>
                     <MetaBlock data={data} align="right" variant={variant} />
-                    <Node data={data} variant={variant} />
+                    <Node
+                      data={data}
+                      variant={variant}
+                      showTopExtension={i === 0}
+                    />
                     <div className={variant === "home" ? "flex justify-start pl-5 md:pl-6" : "flex justify-start pl-4 md:pl-6"}>
                       <div className="w-full max-w-[36rem]">
                         <TimelineCard
@@ -313,7 +346,11 @@ export function WorkExperienceTimeline({ entries, variant = "default" }: WorkExp
                         />
                       </div>
                     </div>
-                    <Node data={data} variant={variant} />
+                    <Node
+                      data={data}
+                      variant={variant}
+                      showTopExtension={i === 0}
+                    />
                     <MetaBlock data={data} align="left" variant={variant} />
                   </>
                 )}

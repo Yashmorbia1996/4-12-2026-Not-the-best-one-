@@ -33,6 +33,7 @@
   --button-secondary: #edf3ff;
   --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.05);
   --shadow-elevated: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --dock-safe-2xl: 2rem;
 }
 
 .dark {
@@ -47,10 +48,10 @@
   --text-primary: #f3f7fb;
   --text-secondary: #c9d4e2;
   --text-muted: #8ea0b6;
-  --accent: #5f7df5;
+  --accent: #7b90e8;
   --accent-foreground: #f8fbff;
   --nav-background: rgba(15, 22, 33, 0.84);
-  --button-primary: #5f7df5;
+  --button-primary: #7b90e8;
   --button-secondary: #182334;
   --shadow-soft: 0 1px 2px rgba(2, 8, 20, 0.38);
   --shadow-elevated: 0 16px 44px rgba(2, 8, 20, 0.42);
@@ -133,6 +134,12 @@
   .site-container {
     padding-left: 4rem;
     padding-right: 4rem;
+  }
+}
+
+@media (width >= 1536px) {
+  .site-container {
+    padding-right: calc(4rem + var(--dock-safe-2xl));
   }
 }
 
@@ -287,7 +294,7 @@ h1, h2, h3 {
     box-shadow: var(--shadow-elevated);
   }
   .theme-section-title {
-    color: var(--color-primary-accent);
+    color: var(--color-text-primary);
     letter-spacing: var(--letter-spacing-heading);
   }
   .theme-eyebrow {

@@ -1,9 +1,8 @@
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Linkedin, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { Button } from "@/components/ui/button";
 
 export function Footer() {
-  const { name, social } = siteConfig;
+  const { name, phone, social } = siteConfig;
   const year = new Date().getFullYear();
 
   return (
@@ -12,34 +11,37 @@ export function Footer() {
         <p className="text-sm text-text-muted">
           &copy; {year} {name}. All rights reserved.
         </p>
-        <div className="flex items-center gap-1">
-          {social.github && (
-            <Button variant="ghost" size="icon" asChild>
-              <a href={social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github className="h-4 w-4" />
-              </a>
-            </Button>
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-text-muted sm:justify-end">
+          {phone && (
+            <span className="inline-flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <span>{phone}</span>
+            </span>
           )}
-          {social.linkedin && (
-            <Button variant="ghost" size="icon" asChild>
-              <a href={social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </Button>
-          )}
-          {social.twitter && (
-            <Button variant="ghost" size="icon" asChild>
-              <a href={social.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <Twitter className="h-4 w-4" />
-              </a>
-            </Button>
+          {social.linkedin ? (
+            <a
+              href={social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 transition-colors duration-200 hover:text-text-primary"
+            >
+              <Linkedin className="h-4 w-4" />
+              <span>LinkedIn</span>
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-2">
+              <Linkedin className="h-4 w-4" />
+              <span>LinkedIn</span>
+            </span>
           )}
           {social.email && (
-            <Button variant="ghost" size="icon" asChild>
-              <a href={`mailto:${social.email}`} aria-label="Email">
-                <Mail className="h-4 w-4" />
-              </a>
-            </Button>
+            <a
+              href={`mailto:${social.email}`}
+              className="inline-flex items-center gap-2 transition-colors duration-200 hover:text-text-primary"
+            >
+              <Mail className="h-4 w-4" />
+              <span>{social.email}</span>
+            </a>
           )}
         </div>
       </div>

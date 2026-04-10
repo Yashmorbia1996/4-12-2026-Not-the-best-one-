@@ -26,7 +26,7 @@ const capabilityCards = [
     title: "Manufacturing Operations",
     bullets: [
       "Plastics, elastomers, and textiles in regulated product builds",
-      "Rapid prototyping, DFM/DFA, and process development",
+      "Rapid prototyping, DFM/DFA, process development, and Six Sigma-informed improvement",
       "Production scaling from 500 to 1,500 UPW",
     ],
   },
