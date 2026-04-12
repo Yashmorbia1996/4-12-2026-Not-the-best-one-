@@ -34,18 +34,21 @@ export function FeaturedProjects() {
       <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-4xl space-y-4">
           <p className="theme-section-title text-5xl font-semibold md:text-6xl">
-            Case Studies
+            Selected Work Projects
           </p>
           <p className="text-base leading-relaxed text-text-secondary">
-            Three flagship projects framed the way engineering teams actually talk about impact.
+            A quick look at the projects that best reflect my work in product development, manufacturing, and execution.
           </p>
         </div>
         <Button variant="ghost" size="sm" asChild className="hidden sm:flex">
           <a href="/projects">
-            All case studies <ArrowRight className="ml-1 h-4 w-4" />
+            View all projects <ArrowRight className="ml-1 h-4 w-4" />
           </a>
         </Button>
       </div>
+      <p className="mb-6 max-w-4xl text-sm leading-relaxed text-text-muted">
+        Disclosure: Project details are limited to non-proprietary information. Images shown are public, recreated, or selected to avoid confidential content.
+      </p>
       <div className="grid grid-cols-12 gap-5">
         {caseStudies.map((project) => (
           <div key={project.slug} className="col-span-12 md:col-span-6 xl:col-span-4">
@@ -55,6 +58,7 @@ export function FeaturedProjects() {
               action={project.action}
               result={project.result}
               slug={project.slug}
+              href={`/projects/${project.slug}`}
             />
           </div>
         ))}
@@ -62,7 +66,7 @@ export function FeaturedProjects() {
       <div className="mt-8 sm:hidden">
         <Button variant="outline" asChild>
           <a href="/projects">
-            All case studies <ArrowRight className="ml-1 h-4 w-4" />
+            View all projects <ArrowRight className="ml-1 h-4 w-4" />
           </a>
         </Button>
       </div>

@@ -1,12 +1,12 @@
 import { type MouseEvent, useEffect, useState } from "react";
-import { ChevronRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, ChevronRight, Mail, MapPin, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
 const homepageSections = [
   { label: "Introduction", href: "#introduction" },
   { label: "Work Experience", href: "#home-work-experience" },
   { label: "Capabilities", href: "#capabilities" },
-  { label: "Case Studies", href: "#case-studies" },
   { label: "My Journey & What's Next", href: "#my-journey" },
 ] as const;
 
@@ -47,6 +47,12 @@ const impactMetrics = [
     label: "Production Tooling",
     detail: "Released to support repeatable assembly and production test.",
   },
+] as const;
+
+const featuredProjectLinks = [
+  { label: "Thermal Redesign Journey", href: "/projects/thermal-redesign-journey" },
+  { label: "LIV Optical Test Rig", href: "/projects/liv-optical-test-rig" },
+  { label: "Press Test Fixture", href: "/projects/press-test-fixture" },
 ] as const;
 
 export function Hero() {
@@ -232,6 +238,40 @@ export function Hero() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Button asChild size="lg">
+                  <a href="/projects">
+                    View Case Studies
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <a href={`mailto:${social.email}`}>
+                    Get in Touch
+                    <Mail className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-start gap-x-3 gap-y-2 text-sm leading-relaxed text-text-secondary">
+                <span className="font-medium text-text-primary">Featured projects:</span>
+                {featuredProjectLinks.map((project, index) => (
+                  <span key={project.href} className="inline-flex items-center">
+                    <a
+                      href={project.href}
+                      className="transition-colors duration-200 hover:text-primary-accent"
+                    >
+                      {project.label}
+                    </a>
+                    {index < featuredProjectLinks.length - 1 ? (
+                      <span className="px-3 text-text-muted" aria-hidden>
+                        /
+                      </span>
+                    ) : null}
+                  </span>
+                ))}
+              </div>
 
               <div className="hero-animate hero-animate-4 mt-10">
                 <p className="mb-4 text-left text-sm leading-[1.7] text-text-muted md:text-[0.95rem]">

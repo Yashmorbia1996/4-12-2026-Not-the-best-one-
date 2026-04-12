@@ -1,35 +1,179 @@
 ---
 title: "Thermal Redesign Journey"
-summary: "The product had a 23% field return rate driven by overheating. Two separate interventions were needed. The first addressed airflow through grill geometry iteration using SolidWorks Flow Simulation, and the second replaced the internal thermal stack with a resourced semiconductor and an all-metal heatsink. Combined, the two phases delivered a 16°C reduction in chip temperature and brought the field return rate from 23% down to 3%."
+summary: "A two-phase thermal redesign that improved airflow, upgraded the internal heat path, and reduced customer return rate from 23% to below 3%."
 date: 2023-05-01
 featured: true
-cover: "/images/projects/project-3.svg"
+cover: "/images/Different_options_temp_comparision.svg"
 tags: ["Thermal Analysis", "SolidWorks Flow Sim", "DFM", "Supplier Evaluation", "RCA"]
 ---
 
-## Overview
+<div class="not-prose my-10 grid gap-4 md:grid-cols-3">
+  <div class="theme-panel rounded-[1.25rem] p-5">
+    <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Customer return rate</p>
+    <p class="mt-3 text-3xl font-semibold tracking-[-0.03em] text-text-primary">23% -> &lt;3%</p>
+  </div>
+  <div class="theme-panel rounded-[1.25rem] p-5">
+    <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Chip temperature</p>
+    <p class="mt-3 text-3xl font-semibold tracking-[-0.03em] text-text-primary">-16°C</p>
+  </div>
+  <div class="theme-panel rounded-[1.25rem] p-5">
+    <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Design approach</p>
+    <p class="mt-3 text-3xl font-semibold tracking-[-0.03em] text-text-primary">2 phases</p>
+  </div>
+</div>
 
-A deployed Class II analyzer was generating thermal fault alarms at 3.2 per 100 units per month in the field. Root cause was traced to an underspecified thermal path between a power MOSFET and the chassis ground plane.
+<div class="not-prose mb-10 rounded-[1.25rem] border border-border bg-surface-elevated/60 px-5 py-4">
+  <p class="text-sm leading-relaxed text-text-muted">
+    Disclosure: Project details are limited to non-proprietary information. Images shown are public, recreated, or selected to avoid confidential content.
+  </p>
+</div>
 
-## Problem
+<div class="not-prose mt-12 rounded-[1.75rem] border border-border bg-surface-elevated/40 p-5 md:p-8">
+  <div class="mb-10">
+    <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Project flow</p>
+    <h2 class="mt-2 text-2xl font-semibold tracking-[-0.03em] text-text-primary">Two-phase redesign</h2>
+  </div>
 
-The original design used a TO-220 MOSFET with a single-layer thermal pad and no heatsink. At 40°C ambient, which is common in clinical settings, junction temperature exceeded the 125°C limit under sustained load. Field service bulletins and firmware throttling were band-aids, so a hardware fix was required.
+  <div class="space-y-12">
+    {/* ── Phase 1 ── */}
+    <div>
+      <div class="mb-5 flex items-center gap-3">
+        <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Phase 1</span>
+        <span class="h-px flex-1 bg-border"></span>
+      </div>
+      <div class="grid gap-5 xl:grid-cols-3 xl:items-stretch">
 
-## Approach
+        {/* Problem */}
+        <div class="flex flex-col overflow-hidden rounded-[1.25rem] border border-border bg-background shadow-[var(--shadow-soft)]">
+          <div class="shrink-0 space-y-1.5 px-5 pb-3 pt-5">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-accent">Phase 1</p>
+            <h3 class="text-lg font-semibold tracking-[-0.02em] text-text-primary">Problem</h3>
+            <p class="text-[13px] leading-relaxed text-text-secondary">
+              Original grill geometry restricted airflow. Field overheating pushed return rate to <strong>23%</strong>.
+            </p>
+          </div>
+          <div class="flex flex-1 flex-col gap-3 border-t border-border/80 bg-surface-elevated/50 p-4">
+            <div class="flex flex-1 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-3">
+              <img
+                src="/images/thermal-redesign-phase1-problem-cfd.png"
+                alt="SolidWorks Flow Simulation — original geometry velocity magnitude and flow trajectories"
+                decoding="async"
+                class="h-auto w-full object-contain"
+              />
+            </div>
+            <div class="flex h-28 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-2">
+              <img
+                src="/images/Phase%201%20pictures_thermal%20redesign/Problem/Picture9.svg"
+                alt="Thermal and airflow indication of the problem state"
+                loading="lazy"
+                decoding="async"
+                class="h-full w-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
 
-Thermal analysis in SolidWorks Simulation (cross-validated against an ANSYS Icepak model):
+        {/* Solution */}
+        <div class="flex flex-col overflow-hidden rounded-[1.25rem] border border-border bg-background shadow-[var(--shadow-soft)]">
+          <div class="shrink-0 space-y-1.5 px-5 pb-3 pt-5">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-accent">Phase 1</p>
+            <h3 class="text-lg font-semibold tracking-[-0.02em] text-text-primary">Solution</h3>
+            <p class="text-[13px] leading-relaxed text-text-secondary">
+              Iterated grill designs in SolidWorks Flow Sim and compared options to pick an improved airflow path.
+            </p>
+          </div>
+          <div class="flex flex-1 flex-col gap-3 border-t border-border/80 bg-surface-elevated/50 p-4">
+            <div class="flex flex-1 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-3">
+              <img src="/images/Final_airflow_sim.svg" alt="Airflow simulation — final optimised grill study" class="h-auto w-full object-contain" />
+            </div>
+            <div class="flex h-28 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-2">
+              <img src="/images/final-airflow-sim.png" alt="Airflow simulation — supporting CFD view" loading="lazy" class="h-full w-auto object-contain" />
+            </div>
+          </div>
+        </div>
 
-1. Modeled the baseline thermal path: junction → case → pad → PCB → chassis
-2. Identified bottleneck: 8°C/W thermal resistance at the PCB-to-chassis interface caused by an undersized thermal via array
-3. Evaluated three design alternatives: heatsink extrusion, copper slug insert, and via-in-pad redesign
+        {/* Result */}
+        <div class="flex flex-col overflow-hidden rounded-[1.25rem] border border-border bg-background shadow-[var(--shadow-soft)]">
+          <div class="shrink-0 space-y-1.5 px-5 pb-3 pt-5">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-accent">Phase 1</p>
+            <h3 class="text-lg font-semibold tracking-[-0.02em] text-text-primary">Result</h3>
+            <p class="text-[13px] leading-relaxed text-text-secondary">
+              Validated improvement: lower chip temp, return rate from <strong>23%</strong> to <strong>8%</strong>.
+            </p>
+          </div>
+          <div class="flex flex-1 flex-col border-t border-border/80 bg-surface-elevated/50 p-4">
+            <div class="flex flex-1 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-3">
+              <img src="/images/Different_options_temp_comparision.svg" alt="Temperature comparison chart — phase 1 grill options" class="h-auto w-full object-contain" />
+            </div>
+          </div>
+        </div>
 
-Recommended solution: copper slug press-fitted into the PCB with direct chassis contact, plus re-routing of thermal vias to a 4×4 array pattern.
+      </div>
+    </div>
 
-DFM review confirmed the slug was machinable at cost parity with the original BOM. ECO process completed in one revision cycle without requiring a new product verification build.
+    {/* ── Phase 2 ── */}
+    <div>
+      <div class="mb-5 flex items-center gap-3">
+        <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Phase 2</span>
+        <span class="h-px flex-1 bg-border"></span>
+      </div>
+      <div class="grid gap-5 xl:grid-cols-3 xl:items-stretch">
 
-## Outcome
+        {/* Semiconductor upgrade */}
+        <div class="flex flex-col overflow-hidden rounded-[1.25rem] border border-border bg-background shadow-[var(--shadow-soft)]">
+          <div class="shrink-0 space-y-1.5 px-5 pb-3 pt-5">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-accent">Phase 2</p>
+            <h3 class="text-lg font-semibold tracking-[-0.02em] text-text-primary">Semiconductor upgrade</h3>
+            <p class="text-[13px] leading-relaxed text-text-secondary">
+              Lower-<strong>Rθjc</strong> <strong>TO-9</strong> package for better junction heat transfer.
+            </p>
+          </div>
+          <div class="flex flex-1 flex-col gap-3 border-t border-border/80 bg-surface-elevated/50 p-4">
+            <div class="flex flex-1 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-3">
+              <img src="/images/projects/project-1.svg" alt="Semiconductor package and thermal path" class="h-auto w-full object-contain" />
+            </div>
+            <div class="flex h-28 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-2">
+              <img src="/images/projects/project-2.svg" alt="Package comparison — thermal path detail" loading="lazy" class="h-full w-auto object-contain" />
+            </div>
+          </div>
+        </div>
 
-- Peak junction temperature: 89°C → 55°C (34°C reduction)
-- Field thermal fault rate: 3.2 → 0.28 per 100 units/month (−91%)
-- No firmware throttling required, and full performance spec restored
-- Solution adopted as the thermal design standard for the next-generation platform
+        {/* Heatsink redesign */}
+        <div class="flex flex-col overflow-hidden rounded-[1.25rem] border border-border bg-background shadow-[var(--shadow-soft)]">
+          <div class="shrink-0 space-y-1.5 px-5 pb-3 pt-5">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-accent">Phase 2</p>
+            <h3 class="text-lg font-semibold tracking-[-0.02em] text-text-primary">Heatsink redesign</h3>
+            <p class="text-[13px] leading-relaxed text-text-secondary">
+              All-metal heatsink path replacing the plastic-plus-metal bottleneck for better conduction.
+            </p>
+          </div>
+          <div class="flex flex-1 flex-col gap-3 border-t border-border/80 bg-surface-elevated/50 p-4">
+            <div class="flex flex-1 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-3">
+              <img src="/images/projects/project-2.svg" alt="Heatsink CAD — redesigned all-metal path" class="h-auto w-full object-contain" />
+            </div>
+            <div class="flex h-28 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-2">
+              <img src="/images/projects/project-3.svg" alt="Heatsink prototype — physical validation" loading="lazy" class="h-full w-auto object-contain" />
+            </div>
+          </div>
+        </div>
+
+        {/* Combined result */}
+        <div class="flex flex-col overflow-hidden rounded-[1.25rem] border border-border bg-background shadow-[var(--shadow-soft)]">
+          <div class="shrink-0 space-y-1.5 px-5 pb-3 pt-5">
+            <p class="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-primary-accent">Phase 2</p>
+            <h3 class="text-lg font-semibold tracking-[-0.02em] text-text-primary">Combined result</h3>
+            <p class="text-[13px] leading-relaxed text-text-secondary">
+              <strong>16°C</strong> chip-temp reduction, return rate from <strong>23%</strong> to <strong>below 3%</strong>.
+            </p>
+          </div>
+          <div class="flex flex-1 flex-col border-t border-border/80 bg-surface-elevated/50 p-4">
+            <div class="flex flex-1 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-white p-3">
+              <img src="/images/Different_options_temp_comparision.svg" alt="Final combined temperature comparison — all phases" class="h-auto w-full object-contain" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

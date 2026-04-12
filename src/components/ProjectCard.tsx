@@ -1,49 +1,122 @@
 interface ProjectCardProps {
   title: string;
-  problem: string;
-  action: string;
-  result: string;
   slug: string;
+  href?: string;
+  cover?: string;
+  context?: string;
+  summary?: string;
+  tags?: string[];
+  problem?: string;
+  action?: string;
+  result?: string;
+  eyebrow?: string;
+  ctaLabel?: string;
+  showSkills?: boolean;
 }
 
-export function ProjectCard({ title, problem, action, result, slug }: ProjectCardProps) {
+export function ProjectCard({
+  title,
+  slug,
+  href,
+  cover,
+  context,
+  summary,
+  tags,
+  problem,
+  action,
+  result,
+  eyebrow,
+  ctaLabel,
+  showSkills = false,
+}: ProjectCardProps) {
+  const linkHref = href ?? `/projects/${slug}`;
+  const hasCaseStudyPreview = Boolean(problem && action && result);
+  const cardEyebrow = eyebrow ?? (hasCaseStudyPreview ? "Case Study" : "Project");
+  const cardCta = ctaLabel ?? (hasCaseStudyPreview ? "Read case study" : "Read more");
+
   return (
-    <article className="theme-panel theme-panel-hover group rounded-xl">
-      <a href={`/projects/${slug}`} className="block">
-        <div className="aspect-video rounded-t-xl border-b border-border bg-surface-elevated" />
+    <article className="theme-panel theme-panel-hover group flex h-full flex-col overflow-hidden rounded-xl">
+      <a href={linkHref} className="block">
+        <div className="aspect-video rounded-t-xl border-b border-border bg-surface-elevated">
+          {cover ? <img src={cover} alt={title} className="h-full w-full object-cover" /> : null}
+        </div>
       </a>
 
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6">
         <p className="theme-eyebrow font-mono text-[11px] font-semibold uppercase tracking-[0.16em]">
-          Case Study
+          {cardEyebrow}
         </p>
         <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-text-primary">
-          <a href={`/projects/${slug}`} className="transition-colors duration-200 group-hover:text-primary-accent">
+          <a href={linkHref} className="transition-colors duration-200 group-hover:text-primary-accent">
             {title}
           </a>
         </h3>
+        {context ? (
+          <p className="mt-2 text-sm leading-relaxed text-text-muted">
+            {context}
+          </p>
+        ) : null}
 
-        <div className="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary">
-          <div>
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Problem</p>
-            <p className="mt-1">{problem}</p>
+        {hasCaseStudyPreview ? (
+          <div className="mt-6 flex-1 space-y-4 text-sm leading-relaxed text-text-secondary">
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
+                Situation / Problem
+              </p>
+              <p className="mt-1">{problem}</p>
+            </div>
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Action</p>
+              <p className="mt-1">{action}</p>
+            </div>
+            <div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Result</p>
+              <p className="mt-1">{result}</p>
+            </div>
           </div>
-          <div>
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Action</p>
-            <p className="mt-1">{action}</p>
+        ) : (
+          <div className="mt-6 flex-1">
+            {summary ? <p className="text-sm leading-relaxed text-text-secondary">{summary}</p> : null}
+            {showSkills && tags?.length ? (
+              <div className="mt-4 flex flex-wrap gap-2">
+                <p className="w-full font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
+                  Skills learned / applied
+                </p>
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-text-muted"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
           </div>
-          <div>
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">Result</p>
-            <p className="mt-1">{result}</p>
-          </div>
-        </div>
+        )}
 
-        <div className="mt-6">
+        {hasCaseStudyPreview && showSkills && tags?.length ? (
+          <div className="mt-5 flex flex-wrap gap-2">
+            <p className="w-full font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
+              Skills learned / applied
+            </p>
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] text-text-muted"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
+
+        <div className="mt-6 pt-2">
           <a
-            href={`/projects/${slug}`}
+            href={linkHref}
             className="text-sm text-primary-accent transition-colors duration-200 hover:opacity-80"
           >
-            Read case study →
+            {cardCta} →
           </a>
         </div>
       </div>
